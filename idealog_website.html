@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idealog Works - Development Innovation Advisory & Incubator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Terminal-style header */
+        header {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 20px 0;
+            font-family: 'Courier Prime', monospace;
+            border-bottom: 4px solid #ffd700;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .terminal-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .terminal-title::before {
+            content: '$ ';
+            color: #ffd700;
+        }
+        
+        .terminal-nav {
+            display: flex;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+        
+        .terminal-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+        }
+        
+        .terminal-nav a:hover {
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        .terminal-nav a::before {
+            content: '// ';
+            color: #888;
+        }
+        
+        /* Hero Section - Terminal Style */
+        .hero {
+            background: #ffffff;
+            padding: 80px 0;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .ascii-art {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            line-height: 1.2;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 40px;
+            white-space: pre;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .code-comment {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        .hero h1::before {
+            content: 'function ';
+            color: #1a1a1a;
+            font-size: 24px;
+        }
+        
+        .hero h1::after {
+            content: '() {';
+            color: #1a1a1a;
+            font-size: 24px;
+        }
+        
+        .highlight {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            text-align: left;
+            background: #f8f8f8;
+            padding: 30px;
+            border-left: 4px solid #ffd700;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .hero-description p {
+            margin-bottom: 20px;
+        }
+        
+        .cta-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid #1a1a1a;
+            transition: all 0.3s ease;
+            font-family: 'Courier Prime', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+            border: 2px solid #ffd700;
+        }
+        
+        .cta-button::before {
+            content: '> ';
+            color: #ffd700;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #fafafa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .section-header h2::before {
+            content: '/* ';
+            color: #888;
+        }
+        
+        .section-header h2::after {
+            content: ' */';
+            color: #888;
+        }
+        
+        .section-description {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .service-block {
+            background: #ffffff;
+            padding: 35px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .service-block:hover {
+            border-color: #ffd700;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .service-number {
+            background: #ffd700;
+            color: #1a1a1a;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 20px;
+            font-size: 18px;
+        }
+        
+        .service-block h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .service-block p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #e0e0e0;
+            font-size: 15px;
+        }
+        
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-features li::before {
+            content: '→ ';
+            color: #ffd700;
+            font-weight: 700;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        .about-text h2::before {
+            content: 'class ';
+            color: #888;
+            font-size: 24px;
+        }
+        
+        .about-text h2::after {
+            content: ' {';
+            color: #888;
+            font-size: 24px;
+        }
+        
+        .mission-statement {
+            background: #f8f8f8;
+            padding: 30px;
+            border-left: 4px solid #ffd700;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-size: 18px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .about-text p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #444;
+            text-align: justify;
+        }
+        
+        .about-values {
+            margin-top: 40px;
+        }
+        
+        .about-values h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        
+        .about-values h3::before {
+            content: '// ';
+            color: #ffd700;
+        }
+        
+        .values-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .values-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 16px;
+        }
+        
+        .values-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .values-list li::before {
+            content: '✓ ';
+            color: #ffd700;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        
+        .stats-terminal {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            font-family: 'Courier Prime', monospace;
+            position: relative;
+        }
+        
+        .terminal-header-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+            margin-right: 15px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #28ca42; }
+        
+        .terminal-title-bar {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .stat-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .stat-line:last-child {
+            margin-bottom: 0;
+        }
+        
+        .stat-label {
+            color: #888;
+        }
+        
+        .stat-value {
+            color: #ffd700;
+            font-weight: 700;
+        }
+        
+        .stat-line::before {
+            content: '$ ';
+            color: #ffd700;
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 80px 0;
+            background: #f8f8f8;
+        }
+        
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .process-step {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .process-step:hover {
+            border-color: #ffd700;
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            background: #ffd700;
+            color: #1a1a1a;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .process-step p {
+            color: #666;
+            font-size: 15px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+        
+        .contact-info h3::before {
+            content: '// ';
+            color: #888;
+        }
+        
+        .contact-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            font-size: 16px;
+        }
+        
+        .contact-details li:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-details li::before {
+            content: '→ ';
+            color: #ffd700;
+            margin-right: 10px;
+        }
+        
+        .contact-form {
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        .contact-form h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+        
+        .contact-form h3::before {
+            content: '$ ';
+            color: #ffd700;
+        }
+        
+        .form-note {
+            color: #888;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .form-note::before {
+            content: '// ';
+            color: #ffd700;
+        }
+        
+        /* Footer */
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+        
+        .footer-content::before {
+            content: '// ';
+            color: #ffd700;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .terminal-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .terminal-nav {
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero h1::before,
+            .hero h1::after {
+                display: block;
+                font-size: 18px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .services-grid,
+            .process-flow {
+                grid-template-columns: 1fr;
+            }
+            
+            .ascii-art {
+                font-size: 8px;
+            }
+        }
+        
+        /* Typing animation */
+        .typing::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #ffd700;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Code syntax highlighting */
+        .code-block {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #ffd700;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .keyword { color: #0066cc; }
+        .string { color: #009900; }
+        .comment { color: #888; font-style: italic; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="terminal-header">
+                <div class="terminal-title">IDEALOG_WORKS.exe</div>
+                <nav class="terminal-nav">
+                    <a href="#home">HOME</a>
+                    <a href="#services">SERVICES</a>
+                    <a href="#about">ABOUT</a>
+                    <a href="#process">PROCESS</a>
+                    <a href="#contact">CONTACT</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="ascii-art">
+    ██╗██████╗ ███████╗ █████╗ ██╗      ██████╗  ██████╗     ██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗███████╗
+    ██║██╔══██╗██╔════╝██╔══██╗██║     ██╔═══██╗██╔════╝     ██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝██╔════╝
+    ██║██║  ██║█████╗  ███████║██║     ██║   ██║██║  ███╗    ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ ███████╗
+    ██║██║  ██║██╔══╝  ██╔══██║██║     ██║   ██║██║   ██║    ██║███╗██║██║   ██║██╔══██╗██╔═██╗ ╚════██║
+    ██║██████╔╝███████╗██║  ██║███████╗╚██████╔╝╚██████╔╝    ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗███████║
+    ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝      ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+                </div>
+                
+                <div class="hero-content">
+                    <div class="code-comment">// Development Innovation Advisory & Incubator</div>
+                    <h1><span class="highlight">innovateFor</span><span class="highlight">Impact</span></h1>
+                    
+                    <div class="hero-description">
+                        <p><strong>We are Idealog Works</strong> — a specialized development innovation advisory and incubator dedicated to transforming groundbreaking ideas into scalable solutions that create measurable social and economic impact across global communities.</p>
+                        
+                        <p>In an era where traditional development approaches often fall short, we bridge the critical gap between innovative thinking and practical implementation. Our mission centers on empowering visionary entrepreneurs, forward-thinking organizations, and impact-driven communities with the strategic guidance, technical expertise, and collaborative networks needed to bring transformative development innovations to life.</p>
+                        
+                        <p>We believe that the most powerful innovations emerge from deep understanding of real-world challenges combined with authentic engagement with the communities we serve. Our approach integrates cutting-edge technology with human-centered design, ensuring that every solution we support is not only technically sound but also culturally relevant and socially sustainable.</p>
+                        
+                        <p>From early-stage ideation and proof-of-concept development to market validation, scaling strategies, and impact measurement, we provide comprehensive support throughout the entire innovation lifecycle. Our team brings together decades of experience in international development, technology innovation, social entrepreneurship, and impact investing.</p>
+                    </div>
+                    
+                    <div class="cta-section">
+                        <a href="#contact" class="cta-button">Initialize Collaboration</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Core Services</h2>
+                    <div class="section-description">
+                        Our comprehensive suite of services spans the entire innovation ecosystem, from strategic advisory and technical incubation to partnership facilitation and impact scaling. Each service is designed to address specific challenges in the development innovation space while maintaining our commitment to authentic, community-centered solutions.
+                    </div>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-block">
+                        <div class="service-header">
+                            <div class="service-number">01</div>
+                            <h3>Strategic Innovation Advisory</h3>
+                        </div>
+                        <p>Comprehensive strategic guidance for organizations and entrepreneurs looking to develop, refine, or pivot their innovation strategies. We provide deep market analysis, competitive landscape assessment, and strategic roadmap development tailored to the unique challenges of development-focused innovations.</p>
+                        <ul class="service-features">
+                            <li>Innovation strategy development and refinement</li>
+                            <li>Market opportunity assessment and validation</li>
+                            <li>Competitive analysis and positioning</li>
+                            <li>Technology roadmap planning</li>
+                            <li>Risk assessment and mitigation strategies</li>
+                            <li>Go-to-market strategy development</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-block">
+                        <div class="service-header">
+                            <div class="service-number">02</div>
+                            <h3>Product Development Incubation</h3>
+                        </div>
+                        <p>End-to-end product development support for innovations addressing development challenges. From initial concept validation through prototype development, user testing, and market-ready product creation, we provide the technical expertise and methodological guidance needed to transform ideas into viable solutions.</p>
+                        <ul class="service-features">
+                            <li>Concept validation and feasibility studies</li>
+                            <li>Rapid prototyping and MVP development</li>
+                            <li>User experience design and testing</li>
+                            <li>Technical architecture and development</li>
+                            <li>Quality assurance and testing protocols</li>
+                            <li>Product launch and optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-block">
+                        <div class="service-header">
+                            <div class="service-number">03</div>
+                            <h3>Partnership & Network Facilitation</h3>
+                        </div>
+                        <p>Strategic partnership development and network building to accelerate innovation impact. We leverage our extensive global network to connect innovators with the right partners, including development organizations, technology providers, academic institutions, and impact investors.</p>
+                        <ul class="service-features">
+                            <li>Strategic partnership identification and development</li>
+                            <li>Investor relations and funding facilitation</li>
+                            <li>Academic and research collaboration</li>
+                            <li>Distribution and implementation partnerships</li>
+                            <li>Cross-sector collaboration facilitation</li>
+                            <li>Network building and community engagement</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-block">
+                        <div class="service-header">
+                            <div class="service-number">04</div>
+                            <h3>Impact Measurement & Analytics</h3>
+                        </div>
+                        <p>Comprehensive impact measurement frameworks and analytics systems to track, analyze, and optimize the social and economic impact of development innovations. We help organizations build robust monitoring and evaluation systems that demonstrate real-world impact to stakeholders and funders.</p>
+                        <ul class="service-features">
+                            <li>Impact measurement framework design</li>
+                            <li>Data collection and analysis systems</li>
+                            <li>Key performance indicator development</li>
+                            <li>Impact reporting and communication</li>
+                            <li>Continuous improvement processes</li>
+                            <li>Stakeholder engagement and feedback loops</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-block">
+                        <div class="service-header">
+                            <div class="service-number">05</div>
+                            <h3>Capacity Building & Training</h3>
+                        </div>
+                        <p>Customized capacity building programs designed to strengthen innovation capabilities within organizations and communities. Our training programs cover technical skills, innovation methodologies, and organizational development to build sustainable innovation ecosystems.</p>
+                        <ul class="service-features">
+                            <li>Innovation methodology training</li>
+                            <li>Technical skills development programs</li>
+                            <li>Leadership and team development</li>
+                            <li>Organizational innovation culture building</li>
+                            <li>Community engagement and co-design training</li>
+                            <li>Sustainability and scaling workshops</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-block">
+                        <div class="service-header">
+                            <div class="service-number">06</div>
+                            <h3>Scaling & Market Expansion</h3>
+                        </div>
+                        <p>Strategic support for scaling successful innovations across markets, regions, and sectors. We help organizations navigate the complex challenges of scaling development innovations while maintaining impact quality and cultural relevance across diverse contexts.</p>
+                        <ul class="service-features">
+                            <li>Scaling strategy development and planning</li>
+                            <li>Market expansion feasibility and planning</li>
+                            <li>Operational scaling and process optimization</li>
+                            <li>Cultural adaptation and localization</li>
+                            <li>Quality assurance across scaled operations</li>
+                            <li>Sustainable growth model development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>About <span class="highlight">Idealog Works</span></h2>
+                        
+                        <div class="mission-statement">
+                            "We exist to accelerate the development and deployment of innovations that address humanity's most pressing challenges, bridging the gap between visionary thinking and practical implementation through authentic collaboration and technical excellence."
+                        </div>
+                        
+                        <p>Founded on the principle that innovation thrives at the intersection of technical expertise and deep community understanding, Idealog Works emerged from years of experience working within the global development ecosystem. Our founders recognized a critical gap: brilliant innovations often struggled to achieve their potential impact due to insufficient strategic support, technical guidance, or network access.</p>
+                        
+                        <p>We have witnessed firsthand how transformative ideas can languish without proper incubation support, how promising prototypes fail to scale due to strategic missteps, and how passionate innovators burn out from navigating complex development ecosystems alone. This understanding drives our commitment to providing comprehensive, authentic support throughout the entire innovation journey.</p>
+                        
+                        <p>Our approach is fundamentally collaborative and community-centered. We believe that the most effective development innovations emerge from genuine partnerships between innovators and the communities they serve. This philosophy shapes every aspect of our work, from initial strategy development through impact measurement and scaling.</p>
+                        
+                        <p>Today, Idealog Works operates globally, supporting innovations across sectors including healthcare, education, agriculture, financial inclusion, climate adaptation, and social enterprise. Our diverse team brings together expertise in technology development, international development, social entrepreneurship, impact investing, and community engagement.</p>
+                        
+                        <div class="about-values">
+                            <h3>Our Core Values</h3>
+                            <ul class="values-list">
+                                <li><strong>Authenticity:</strong> Building genuine relationships and solutions grounded in real community needs</li>
+                                <li><strong>Excellence:</strong> Maintaining the highest standards in technical execution and strategic guidance</li>
+                                <li><strong>Collaboration:</strong> Fostering partnerships that leverage collective expertise and shared commitment</li>
+                                <li><strong>Impact:</strong> Prioritizing measurable social and economic outcomes above all else</li>
+                                <li><strong>Sustainability:</strong> Building solutions that endure and scale responsibly over time</li>
+                                <li><strong>Innovation:</strong> Embracing creative approaches while respecting proven methodologies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-terminal">
+                        <div class="terminal-header-bar">
+                            <div class="terminal-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <div class="terminal-title-bar">impact_metrics.log</div>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">innovations_supported:</span>
+                            <span class="stat-value">127</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">countries_active:</span>
+                            <span class="stat-value">34</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">lives_impacted:</span>
+                            <span class="stat-value">2.3M+</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">funding_mobilized:</span>
+                            <span class="stat-value">$45M+</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">partnerships_facilitated:</span>
+                            <span class="stat-value">89</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">years_experience:</span>
+                            <span class="stat-value">15+</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">team_expertise_areas:</span>
+                            <span class="stat-value">12</span>
+                        </div>
+                        <div class="stat-line">
+                            <span class="stat-label">success_rate:</span>
+                            <span class="stat-value">87%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Innovation Process</h2>
+                    <div class="section-description">
+                        We follow a structured yet flexible methodology that adapts to each innovation's unique context while ensuring comprehensive support throughout the development lifecycle. Our process emphasizes iterative development, continuous stakeholder engagement, and measurable impact validation at every stage.
+                    </div>
+                </div>
+                
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <h3>Discovery & Assessment</h3>
+                        <p>Comprehensive analysis of the innovation opportunity, market context, stakeholder landscape, and technical feasibility to establish a solid foundation for development.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <h3>Strategy Development</h3>
+                        <p>Collaborative creation of detailed innovation strategy, including technical roadmap, market positioning, partnership strategy, and impact measurement framework.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <h3>Prototype & Validation</h3>
+                        <p>Rapid prototyping and iterative testing with target communities to validate assumptions, refine features, and ensure market-solution fit before full development.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">04</div>
+                        <h3>Development & Testing</h3>
+                        <p>Full product development with continuous testing, quality assurance, and stakeholder feedback integration to ensure robust, user-centered solutions.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">05</div>
+                        <h3>Launch & Implementation</h3>
+                        <p>Strategic market launch with implementation support, partner onboarding, user training, and initial impact measurement to ensure successful deployment.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">06</div>
+                        <h3>Scale & Optimize</h3>
+                        <p>Systematic scaling support with continuous optimization, impact monitoring, partnership expansion, and sustainability planning for long-term success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="color: #ffffff;">Ready to Innovate Together?</h2>
+                    <div class="section-description" style="background: #2a2a2a; border: 1px solid #333;">
+                        Whether you're an entrepreneur with a transformative idea, an organization seeking to drive innovation, or a community looking for development solutions, we're here to help turn your vision into measurable impact. Let's explore how we can collaborate to create lasting change.
+                    </div>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Connect With Us</h3>
+                        <ul class="contact-details">
+                            <li><strong>Email:</strong> hello@idealogworks.com</li>
+                            <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+                            <li><strong>Address:</strong> 123 Innovation Street, Tech Hub, CA 94000</li>
+                            <li><strong>LinkedIn:</strong> /company/idealog-works</li>
+                            <li><strong>Twitter:</strong> @IdealogWorks</li>
+                            <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 6:00 PM PST</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Start a Conversation</h3>
+                        <div class="form-note">Send us a message and we'll get back to you within 24 hours</div>
+                        
+                        <div class="code-block">
+<span class="keyword">function</span> <span class="string">startCollaboration</span>() {
+  <span class="comment">// Tell us about your innovation</span>
+  <span class="keyword">const</span> yourIdea = <span class="string">"Describe your project..."</span>;
+  <span class="keyword">const</span> yourGoals = <span class="string">"What impact do you want to create?"</span>;
+  <span class="keyword">const</span> yourNeeds = <span class="string">"How can we help?"</span>;
+  
+  <span class="comment">// We'll respond with</span>
+  <span class="keyword">return</span> {
+    strategicGuidance: <span class="keyword">true</span>,
+    technicalExpertise: <span class="keyword">true</span>,
+    networkAccess: <span class="keyword">true</span>,
+    impactMeasurement: <span class="keyword">true</span>
+  };
+}
+                        </div>
+                        
+                        <p style="margin-top: 20px; color: #888;">Ready to begin? Email us at <span style="color: #ffd700;">hello@idealogworks.com</span> with your project details, or call us to schedule an initial consultation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                © 2025 Idealog Works. Empowering innovation for global impact through authentic collaboration and technical excellence.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add typing effect to hero title
+        function addTypingEffect() {
+            const title = document.querySelector('.hero h1');
+            if (title) {
+                title.classList.add('typing');
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add typing effect
+            setTimeout(addTypingEffect, 1000);
+            
+            // Observe elements for scroll animations
+            document.querySelectorAll('.service-block, .process-step, .about-text').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Terminal-style console messages
+        console.log('%c> Idealog Works - Innovation System Initialized', 'color: #ffd700; font-family: monospace; font-size: 16px;');
+        console.log('%c// Ready to transform ideas into impact', 'color: #888; font-family: monospace;');
+        console.log('%c$ execute --innovation --collaboration --impact', 'color: #1a1a1a; font-family: monospace;');
+    </script>
+</body>
+</html>
